@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+{% block content %}
+	<div class="container">
+		<form method="POST" class="form-group" enctype=multipart/form-data action="/datauploads">
+			<p>Upload file:</p>
+			<div class="form-group">
+				<label class="col-sm-3 control-label">
+					Attachment(s)
+					(Attach multiple files.)
+				</label>
+				<div class="col-sm-9">
+					<span class="btn btn-default btn-file">
+						<input type="file" name="name" multiple><br><br>
+						After uploading multiple files, click Submit.<br>
+						<input type="submit" value="Submit">
+					</span>
+				</div>
+			</div>
+		</form>
+		{% if uploadfiles %}
+			{% for name in uploadfiles %}
+				<p>{{ name }} </p>
+			{% endfor %}
+		{% endif %}
+		<form method="POST" action="/process">
+			<div class="mt-3">
+			  <button type="submit" class="btn btn-primary">Training Data</button>
+			</div>
+		</form> 
+	</div>
+	<script>
+		// Add the following code if you want the name of the file appear on select
+		$(".custom-file-input").on("change", function() {
+		  var fileName = $(this).val().split("\\").pop();
+		  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+		});
+	</script>
+{% endblock%}

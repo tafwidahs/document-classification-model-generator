@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block content %}
+	<div class="container">
+		<img src="{{ flow_image }}">
+        <form method="POST" class="form-group" enctype=multipart/form-data action="/pdftesting">
+			<div class="custom-file mb-3">
+				<input type="file" class="custom-file-input" id="customFile" name="pdffile">
+				<label class="custom-file-label" for="customFile">Upload PDF Files</label>
+			</div>
+			<div class="mt-3">
+				<button type="submit" class="btn btn-primary">Test New Document</button>
+			</div>
+        </form>        
+    </div> 
+	<script>
+	// Add the following code if you want the name of the file appear on select
+	$(".custom-file-input").on("change", function() {
+	  var fileName = $(this).val().split("\\").pop();
+	  $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+	});
+	</script>
+{% endblock%}

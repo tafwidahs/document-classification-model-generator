@@ -1,0 +1,8 @@
+pandas
+time
+sklearn
+pickle
+nltk
+itertools
+spacy
+gensum
